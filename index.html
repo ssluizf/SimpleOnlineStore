@@ -17,26 +17,32 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <nav>
-            <header class="nav-wrapper cyan darken-1">
-              <a href="#" class="brand-logo"><i class="material-icons">shop_two</i>Shopping for</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#"><i class="material-icons">menu</i></a></li>
-              </ul>
-            </header>
-        </nav>
+        <div class="navbar-fixed">
+          <nav>
+              <header class="nav-wrapper cyan darken-1">
+                <a href="#" class="brand-logo"><i class="material-icons">shop_two</i>Shopping for</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                  <li><a href="#"><i class="material-icons" id="cart">
+                    <span>shopping_cart</span>
+                    <circle></circle>
+                  </i></a></li>
+                  <li><a href="#"><i class="material-icons">menu</i></a></li>
+                </ul>
+              </header>
+          </nav>
+        </div>
         
         <div class="container-fluid">
           <div class="row">
-            <div class="col s12 m12 l7">
+            <div class="col s12 m12 l7" id="card-grid">
               <div class="col s12 m6 push-l1">
                 <div class="card">
                   <div class="card-image">
-                    <img src="img/market.jpg">
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    <img src="img/chess.jpg">
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
-                    <span class="card-title">Market</span>
+                    <span class="card-title">Chess - <strong>R$ 20,00</strong></span>
                     <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
                   </div>
                 </div>
@@ -44,11 +50,11 @@
               <div class="col s12 m6 push-l1">
                 <div class="card">
                   <div class="card-image">
-                    <img src="img/market.jpg">
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    <img src="img/d20.jpg">
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
-                    <span class="card-title">Market</span>
+                    <span class="card-title">D20 - <strong>R$ 20,00</strong></span>
                     <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
                   </div>
                 </div>
@@ -56,11 +62,11 @@
               <div class="col s12 m6 push-l1">
                 <div class="card">
                   <div class="card-image">
-                    <img src="img/market.jpg">
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    <img src="img/chess.jpg">
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
-                    <span class="card-title">Market</span>
+                    <span class="card-title">Chess - <strong>R$ 20,00</strong></span>
                     <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
                   </div>
                 </div>
@@ -68,11 +74,11 @@
               <div class="col s12 m6 push-l1">
                 <div class="card">
                   <div class="card-image">
-                    <img src="img/market.jpg">
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    <img src="img/d20.jpg">
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
-                    <span class="card-title">Market</span>
+                    <span class="card-title">D20 - <strong>R$ 20,00</strong></span>
                     <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
                   </div>
                 </div>
@@ -82,8 +88,7 @@
             <div class="col l4 push-l1 hide-on-med-and-down">
               <div class="card">
                 <div class="card-image">
-                  <img src="img/market.jpg">
-                  <a class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                  <img src="img/synapsy.jpg">
                 </div>
                 <div class="card-content">
                   <span class="card-title">Market</span>
@@ -97,5 +102,20 @@
             </div>
           </div>
         </div>
+
+        <script>
+          const buttons = document.getElementsByClassName('btn-floating btn-large')
+
+          for (let button of buttons) {
+            button.onclick = () => {
+              const cartElements = document.getElementById('cart').children
+              cartElements[0].innerHTML = 'add_shopping_cart'
+              cartElements[1].classList.add('active')
+              setTimeout(() => {
+                cartElements[1].classList.remove('active')
+              }, 200)
+            }
+          }
+        </script>
     </body>
 </html>
