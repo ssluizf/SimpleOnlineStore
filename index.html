@@ -106,14 +106,29 @@
         <script>
           const buttons = document.getElementsByClassName('btn-floating btn-large')
 
+          function hideElements(remove, out) {
+            remove.forEach(element => {
+              element.classList.remove('active')
+            });
+            out.forEach(element => {
+              element.classList.add('scale-transition', 'scale-out')
+            });
+          }
+
           for (let button of buttons) {
-            button.onclick = () => {
+            button.onclick = (e) => {
               const cartElements = document.getElementById('cart').children
+              const currentTarget = e.currentTarget
+              const btnCircle = currentTarget.children[1]
+
+              const currentCard = currentTarget.parentElement.parentElement
+              
               cartElements[0].innerHTML = 'add_shopping_cart'
               cartElements[1].classList.add('active')
-              setTimeout(() => {
-                cartElements[1].classList.remove('active')
-              }, 200)
+              btnCircle.classList.add('active')
+              currentCard.classList.add('destaque')
+
+              setTimeout(() => { hideElements([cartElements[1], btnCircle], [currentTarget]) }, 200)
             }
           }
         </script>
