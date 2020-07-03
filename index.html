@@ -37,7 +37,7 @@
             <div class="col s12 m12 l7" id="card-grid">
               <div class="col s12 m6 push-l1">
                 <div class="card">
-                  <a class="btn-floating waves-effect waves-red btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
+                  <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
                     <img src="img/chess.jpg">
                     <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
@@ -50,7 +50,7 @@
               </div>
               <div class="col s12 m6 push-l1">
                 <div class="card">
-                  <a class="btn-floating waves-effect waves-red btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
+                  <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
                     <img src="img/d20.jpg">
                     <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
@@ -63,7 +63,7 @@
               </div>
               <div class="col s12 m6 push-l1">
                 <div class="card">
-                  <a class="btn-floating waves-effect waves-red btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
+                  <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
                     <img src="img/chess.jpg">
                     <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
@@ -76,7 +76,7 @@
               </div>
               <div class="col s12 m6 push-l1">
                 <div class="card">
-                  <a class="btn-floating waves-effect waves-red btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
+                  <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
                     <img src="img/d20.jpg">
                     <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
@@ -108,13 +108,15 @@
         </div>
 
         <script>
-          const buttons = document.getElementsByClassName('btn-floating btn-large')
+          const cashButtons = document.getElementsByClassName('btn-floating btn-large')
+          const closeButtons = document.getElementsByClassName('btn-floating btn-small')
 
           function hideElements(remove, out) {
             remove.forEach(element => {
               element.classList.remove('active')
             });
             out.forEach(element => {
+              element.classList.remove('scale-in')
               element.classList.add('scale-transition', 'scale-out')
             });
           }
@@ -129,12 +131,12 @@
             });
           }
 
-          for (let button of buttons) {
+          for (let button of cashButtons) {
             button.onclick = (e) => {
-              const cartElements = document.getElementById('cart').children
               const currentTarget = e.currentTarget
+              const cartElements = document.getElementById('cart').children
               const btnCircle = currentTarget.children[1]
-
+              
               const currentCard = currentTarget.parentElement.parentElement
               const close = currentCard.children[0]
               
@@ -143,6 +145,17 @@
 
               showElements([cartElements[1], btnCircle], [close])
               setTimeout(() => { hideElements([cartElements[1], btnCircle], [currentTarget]) }, 200)
+            }
+          }
+
+          for (let button of closeButtons) {
+            button.onclick = (e) => {
+              const currentTarget = e.currentTarget
+              const currentCard = currentTarget.parentElement
+
+              currentCard.classList.remove('spotlight')
+
+              hideElements([], [currentTarget])
             }
           }
         </script>
