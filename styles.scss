@@ -1,5 +1,6 @@
 $font-base: 'Roboto', monospace;
 $font-size: 1.2rem;
+$border-size: 2px;
 
 body {
     background-color: #ffffff;
@@ -27,23 +28,34 @@ body {
     color: #64dd17;
 }
 
+div.card {
+    box-shadow: 6px 9px 20px 5px rgba(0,0,0,0.6);
+}
+
 #card-grid .card {
     padding: 2px;
 }
 
-#card-grid .card.destaque {
-    border: 2px solid #64dd17;
+#card-grid .card > a {
+    position: absolute;
+    right: $border-size;
+    margin: -8px -8px 0px 0px;
+    z-index: 1;
+}
+
+#card-grid .card.spotlight {
+    border: $border-size solid #64dd17;
     padding: 0px;
 }
 
-#card-grid a {
+#card-grid .card-image a {
     display: flex;
     align-items: center;
     justify-content: center;
     transition-duration: 0.4s;
 }
 
-#card-grid a:hover {
+#card-grid .card-image a:hover {
     width: 72px;
     height: 72px;
     font-size: 32px;
@@ -69,8 +81,4 @@ body {
 #cart > circle.active {
     width: 80px;
     height: 80px;
-}
-
-div.card {
-    box-shadow: 6px 9px 20px 5px rgba(0,0,0,0.6);
 }
