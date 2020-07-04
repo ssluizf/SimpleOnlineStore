@@ -39,8 +39,11 @@
                 <div class="card">
                   <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
-                    <img src="img/chess.jpg">
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
+                    <img src="img/chess.jpg"></img>
+                    <span class="card-title hide">Purchased</span>
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4">
+                      <i class="material-icons">attach_money</i>
+                    </a>
                   </div>
                   <div class="card-content">
                     <span class="card-title">Chess - <strong>R$ 20,00</strong></span>
@@ -53,6 +56,7 @@
                   <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
                     <img src="img/d20.jpg">
+                    <span class="card-title hide">Purchased</span>
                     <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
@@ -66,6 +70,7 @@
                   <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
                     <img src="img/chess.jpg">
+                    <span class="card-title hide">Purchased</span>
                     <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
@@ -79,6 +84,7 @@
                   <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
                     <img src="img/d20.jpg">
+                    <span class="card-title hide">Purchased</span>
                     <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
@@ -111,24 +117,43 @@
           const cashButtons = document.getElementsByClassName('btn-floating btn-large')
           const closeButtons = document.getElementsByClassName('btn-floating btn-small')
 
-          function hideElements(remove, out) {
-            remove.forEach(element => {
-              element.classList.remove('active')
-            });
-            out.forEach(element => {
-              element.classList.remove('scale-in')
-              element.classList.add('scale-transition', 'scale-out')
-            });
+          class Elements {
+            constructor(type, ...elements) {
+              this.type = type;
+              this.elements = elements;
+
+              this[this.type]();
+            }
           }
 
-          function showElements(active, on) {
-            active.forEach(element => {
-              element.classList.add('active')
-            });
-            on.forEach(element => {
-              element.classList.add('scale-in')
-              element.classList.remove('scale-transition', 'scale-out')
-            });
+          class HideElements extends Elements {
+            remove() {
+              this.elements.forEach(e => e.classList.remove('active'))
+            }
+
+            out() {
+              this.elements.forEach(e => e.classList.remove('scale-in'))
+              this.elements.forEach(e => e.classList.add('scale-transition', 'scale-out'))
+            }
+            
+            hide() {
+              this.elements.forEach(e => e.classList.add('hide'))
+            }
+          }
+
+          class ShowElements extends Elements {
+            active() {
+              this.elements.forEach(e => e.classList.add('active'))
+            }
+
+            on() {
+              this.elements.forEach(e => e.classList.add('scale-in'))
+              this.elements.forEach(e => e.classList.remove('scale-transition', 'scale-out'))
+            }
+
+            show() {
+              this.elements.forEach(e => e.classList.remove('hide'))
+            }
           }
 
           for (let button of cashButtons) {
@@ -139,12 +164,19 @@
               
               const currentCard = currentTarget.parentElement.parentElement
               const close = currentCard.children[0]
+              const currentText = currentCard.children[1].children[1]
               
               cartElements[0].innerHTML = 'add_shopping_cart'
               currentCard.classList.add('spotlight')
 
-              showElements([cartElements[1], btnCircle], [close])
-              setTimeout(() => { hideElements([cartElements[1], btnCircle], [currentTarget]) }, 200)
+              let active = new ShowElements('active', cartElements[1], btnCircle)
+              let on = new ShowElements('on', close)
+              let show = new ShowElements('show', currentText)
+              
+              setTimeout(() => {
+                let remove = new HideElements('remove', cartElements[1], btnCircle)
+                let out = new HideElements('out', currentTarget)
+              }, 200)
             }
           }
 
@@ -152,10 +184,14 @@
             button.onclick = (e) => {
               const currentTarget = e.currentTarget
               const currentCard = currentTarget.parentElement
+              const currentText = currentCard.children[1].children[1]
+              const currentButton = currentCard.children[1].children[2]
 
               currentCard.classList.remove('spotlight')
 
-              hideElements([], [currentTarget])
+              let on = new ShowElements('on', currentButton)
+              let out = new HideElements('out', currentTarget)
+              let hide = new HideElements('hide', currentText)
             }
           }
         </script>

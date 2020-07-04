@@ -25,7 +25,8 @@ body {
 }
 
 #card-grid strong:hover {
-    color: #64dd17;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 div.card {
@@ -42,6 +43,11 @@ div.card {
     margin: -8px -8px 0px 0px;
     z-index: 1;
 }
+
+// #card-grid .card img > p {
+//     position: absolute;
+//     z-index: 1;
+// }
 
 #card-grid .card.spotlight {
     border: $border-size solid #64dd17;

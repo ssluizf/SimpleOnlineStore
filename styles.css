@@ -21,7 +21,8 @@ body {
 }
 
 #card-grid strong:hover {
-  color: #64dd17;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 div.card {
