@@ -8,8 +8,8 @@ body {
 
 #nav-mobile a {
   font-family: "Roboto", monospace;
-  font-weight: 500;
   font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .nav-wrapper > .brand-logo {
@@ -31,6 +31,15 @@ div.card {
 
 #card-grid .card {
   padding: 2px;
+}
+
+#card-grid .card-image .card-title {
+  font-family: "Roboto", monospace;
+  font-weight: 500;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  margin-left: calc(50% - 154.11px / 2);
+  margin-bottom: calc(50% - 84px);
 }
 
 #card-grid .card > a {
@@ -67,7 +76,6 @@ div.card {
 #cart > circle {
   position: absolute;
   background-color: #ffd600;
-  border: 0px;
   width: 0px;
   height: 0px;
   border-radius: 50%;

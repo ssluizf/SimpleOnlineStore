@@ -12,8 +12,8 @@ body {
 
 #nav-mobile a {
     font-family: $font-base;
-    font-weight: 500;
     font-size: $font-size;
+    font-weight: 500;
 }
 
 .nav-wrapper > .brand-logo {
@@ -37,17 +37,21 @@ div.card {
     padding: 2px;
 }
 
+#card-grid .card-image .card-title {
+    font-family: $font-base;
+    font-weight: 500;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    margin-left: calc(50% - 154.11px / 2);
+    margin-bottom: calc(50% - 84px);
+}
+
 #card-grid .card > a {
     position: absolute;
     right: $border-size;
     margin: -8px -8px 0px 0px;
     z-index: 1;
 }
-
-// #card-grid .card img > p {
-//     position: absolute;
-//     z-index: 1;
-// }
 
 #card-grid .card.spotlight {
     border: $border-size solid #64dd17;
@@ -76,9 +80,10 @@ div.card {
 #cart > circle {
     position: absolute;
     background-color: #ffd600;
-    border: 0px;
+
     width: 0px;
     height: 0px;
+
     border-radius: 50%;
     z-index: 1;
     transition: 0.2s ease-in-out;
