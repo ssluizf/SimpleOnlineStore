@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;800&display=swap" rel="stylesheet">
 
         <!-- Stylesheet -->
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
     </head>
     <body>
         <div class="navbar-fixed">
@@ -22,7 +22,7 @@
               <header class="nav-wrapper cyan darken-1">
                 <a href="#" class="brand-logo"><i class="material-icons">shop_two</i>Shopping for</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                  <li><a href="#"><i class="material-icons" id="cart">
+                  <li><a href="./pages/cart.html"><i class="material-icons" id="cart">
                     <span>shopping_cart</span>
                     <circle></circle>
                   </i></a></li>
@@ -39,9 +39,9 @@
                 <div class="card">
                   <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
-                    <img src="img/chess.jpg"></img>
-                    <span class="card-title hide">Go to Cart</span>
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4">
+                    <img src="assets/img/chess.jpg"></img>
+                    <a class="card-title hide" href="pages/cart.html">Go to Cart</a>
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4 scale-in">
                       <i class="material-icons">attach_money</i>
                     </a>
                   </div>
@@ -55,9 +55,9 @@
                 <div class="card">
                   <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
-                    <img src="img/d20.jpg">
-                    <span class="card-title hide">Go to Cart</span>
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
+                    <img src="assets/img/d20.jpg">
+                    <a class="card-title hide" href="pages/cart.html">Go to Cart</a>
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4 scale-in"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
                     <span class="card-title">D20 - <strong>R$ 20,00</strong></span>
@@ -69,9 +69,9 @@
                 <div class="card">
                   <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
-                    <img src="img/chess.jpg">
-                    <span class="card-title hide">Go to Cart</span>
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
+                    <img src="assets/img/chess.jpg">
+                    <a class="card-title hide" href="pages/cart.html">Go to Cart</a>
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4 scale-in"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
                     <span class="card-title">Chess - <strong>R$ 20,00</strong></span>
@@ -83,9 +83,9 @@
                 <div class="card">
                   <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
                   <div class="card-image">
-                    <img src="img/d20.jpg">
-                    <span class="card-title hide">Go to Cart</span>
-                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4"><i class="material-icons">attach_money</i></a>
+                    <img src="assets/img/d20.jpg">
+                    <a class="card-title hide" href="pages/cart.html">Go to Cart</a>
+                    <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4 scale-in"><i class="material-icons">attach_money</i></a>
                   </div>
                   <div class="card-content">
                     <span class="card-title">D20 - <strong>R$ 20,00</strong></span>
@@ -98,7 +98,7 @@
             <div class="col l4 push-l1 hide-on-med-and-down">
               <div class="card">
                 <div class="card-image">
-                  <img src="img/synapsy.jpg">
+                  <img src="assets/img/synapsy.jpg">
                 </div>
                 <div class="card-content">
                   <span class="card-title">Market</span>
@@ -113,87 +113,6 @@
           </div>
         </div>
 
-        <script>
-          const cashButtons = document.getElementsByClassName('btn-floating btn-large')
-          const closeButtons = document.getElementsByClassName('btn-floating btn-small')
-
-          class Elements {
-            constructor(type, ...elements) {
-              this.type = type;
-              this.elements = elements;
-
-              this[this.type]();
-            }
-          }
-
-          class HideElements extends Elements {
-            remove() {
-              this.elements.forEach(e => e.classList.remove('active'))
-            }
-
-            out() {
-              this.elements.forEach(e => e.classList.remove('scale-in'))
-              this.elements.forEach(e => e.classList.add('scale-transition', 'scale-out'))
-            }
-            
-            hide() {
-              this.elements.forEach(e => e.classList.add('hide'))
-            }
-          }
-
-          class ShowElements extends Elements {
-            active() {
-              this.elements.forEach(e => e.classList.add('active'))
-            }
-
-            on() {
-              this.elements.forEach(e => e.classList.add('scale-in'))
-              this.elements.forEach(e => e.classList.remove('scale-transition', 'scale-out'))
-            }
-
-            show() {
-              this.elements.forEach(e => e.classList.remove('hide'))
-            }
-          }
-
-          for (let button of cashButtons) {
-            button.onclick = (e) => {
-              const currentTarget = e.currentTarget
-              const cartElements = document.getElementById('cart').children
-              const btnCircle = currentTarget.children[1]
-              
-              const currentCard = currentTarget.parentElement.parentElement
-              const close = currentCard.children[0]
-              const currentText = currentCard.children[1].children[1]
-              
-              cartElements[0].innerHTML = 'add_shopping_cart'
-              currentCard.classList.add('spotlight')
-
-              let active = new ShowElements('active', cartElements[1], btnCircle)
-              let on = new ShowElements('on', close)
-              let show = new ShowElements('show', currentText)
-              
-              setTimeout(() => {
-                let remove = new HideElements('remove', cartElements[1], btnCircle)
-                let out = new HideElements('out', currentTarget)
-              }, 200)
-            }
-          }
-
-          for (let button of closeButtons) {
-            button.onclick = (e) => {
-              const currentTarget = e.currentTarget
-              const currentCard = currentTarget.parentElement
-              const currentText = currentCard.children[1].children[1]
-              const currentButton = currentCard.children[1].children[2]
-
-              currentCard.classList.remove('spotlight')
-
-              let on = new ShowElements('on', currentButton)
-              let out = new HideElements('out', currentTarget)
-              let hide = new HideElements('hide', currentText)
-            }
-          }
-        </script>
+        <script src="assets/js/index.js"></script>
     </body>
 </html>
