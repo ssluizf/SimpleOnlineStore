@@ -1,0 +1,47 @@
+.card {
+    padding: 2px;
+}
+  
+.card-image .card-title {
+    font-family: "Roboto", monospace;
+    font-weight: 500;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    margin-left: calc(50% - 154.11px / 2);
+    margin-bottom: calc(50% - 84px);
+}
+
+.card > a {
+    position: absolute;
+    right: 2px;
+    margin: -9px -9px 0px 0px;
+    z-index: 1;
+}
+
+.card.spotlight {
+    border: 2px solid #64dd17;
+    box-shadow: 0px 0px 0px 2px #64dd17;
+    padding: 0px;
+}
+
+.card-image a:nth-of-type(2) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.4s;
+}
+
+img.spotlight {
+    filter: blur(1.2px);
+}
+
+.card-image a:nth-of-type(2):hover {
+    width: 72px;
+    height: 72px;
+    font-size: 32px;
+}
+
+strong:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}

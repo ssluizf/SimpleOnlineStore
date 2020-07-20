@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SimpleOnlineStore</title>
+
+        <!-- Materialize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;800&display=swap" rel="stylesheet">
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="assets/css/styles.css">
+    </head>
+    <body>
+      <div class="navbar-fixed">
+        <nav>
+            <header class="nav-wrapper indigo lighten-1">
+              <a href="index.html" class="brand-logo"><i class="material-icons">shop_two</i>Shopping for</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="./pages/cart.html"><i class="material-icons" id="cart">
+                  <span>shopping_cart</span>
+                  <circle></circle>
+                </i></a></li>
+                <li><a href="#"><i class="material-icons">menu</i></a></li>
+              </ul>
+            </header>
+        </nav>
+      </div>
+      
+      <div class="wave-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#ffb74d" fill-opacity="1" d="M0,320L48,282.7C96,245,192,171,288,165.3C384,160,480,224,576,213.3C672,203,768,117,864,74.7C960,32,1056,32,1152,80C1248,128,1344,224,1392,272L1440,320L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+        </svg>
+      </div>
+      
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col s12 m12 l7" id="card-grid">
+            <div class="col s12 m6 push-l1">
+              <div class="card">
+                <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
+                <div class="card-image">
+                  <img src="assets/img/chess.jpg"></img>
+                  <a class="card-title hide" href="pages/cart.html">Go to Cart</a>
+                  <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4 scale-in">
+                    <i class="material-icons">attach_money</i>
+                  </a>
+                </div>
+                <div class="card-content">
+                  <span class="card-title">Chess - <strong>R$ 20,00</strong></span>
+                  <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m6 push-l1">
+              <div class="card">
+                <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
+                <div class="card-image">
+                  <img src="assets/img/d20.jpg">
+                  <a class="card-title hide" href="pages/cart.html">Go to Cart</a>
+                  <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4 scale-in"><i class="material-icons">attach_money</i></a>
+                </div>
+                <div class="card-content">
+                  <span class="card-title">D20 - <strong>R$ 20,00</strong></span>
+                  <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m6 push-l1">
+              <div class="card">
+                <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
+                <div class="card-image">
+                  <img src="assets/img/chess.jpg">
+                  <a class="card-title hide" href="pages/cart.html">Go to Cart</a>
+                  <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4 scale-in"><i class="material-icons">attach_money</i></a>
+                </div>
+                <div class="card-content">
+                  <span class="card-title">Chess - <strong>R$ 20,00</strong></span>
+                  <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m6 push-l1">
+              <div class="card">
+                <a class="btn-floating btn-small scale-transition scale-out"><i class="material-icons">close</i></a>
+                <div class="card-image">
+                  <img src="assets/img/d20.jpg">
+                  <a class="card-title hide" href="pages/cart.html">Go to Cart</a>
+                  <a class="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4 scale-in"><i class="material-icons">attach_money</i></a>
+                </div>
+                <div class="card-content">
+                  <span class="card-title">D20 - <strong>R$ 20,00</strong></span>
+                  <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col l4 push-l1 hide-on-med-and-down">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Shopping for</span>
+                <p>Just a SimpleOnlineStore</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script src="assets/js/index.js"></script>
+    </body>
+</html>
