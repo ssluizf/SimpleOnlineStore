@@ -1,0 +1,24 @@
+#cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+#cart > div {
+    position: absolute;
+    background-color: #ffd600;
+    width: 0px;
+    height: 0px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: 0.2s ease-in-out;
+}
+
+#cart > div.active {
+    width: 80px;
+    height: 80px;
+}
+
+.brand-logo {
+    margin-left: 1rem;
+}

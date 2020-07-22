@@ -11,7 +11,7 @@
     margin-bottom: calc(50% - 84px);
 }
 
-.card > a {
+.card > span {
     position: absolute;
     right: 2px;
     margin: -9px -9px 0px 0px;
@@ -24,7 +24,7 @@
     padding: 0px;
 }
 
-.card-image a:nth-of-type(2) {
+.card-image span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +35,7 @@ img.spotlight {
     filter: blur(1.2px);
 }
 
-.card-image a:nth-of-type(2):hover {
+.card-image span:hover {
     width: 72px;
     height: 72px;
     font-size: 32px;

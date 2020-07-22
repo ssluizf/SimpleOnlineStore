@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, BrowserRouter} from 'react-router-dom';
 
-import Home from './components/template/Home'
-import Cart from './components/template/Cart'
-import Navbar from './components/template/Navbar'
+import Home from './pages/Home'
+import Cart from './pages/Cart'
+import Navbar from './components/Navbar'
 
 function Routes() {
     return (

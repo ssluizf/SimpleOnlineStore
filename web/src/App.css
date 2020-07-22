@@ -1,69 +1,35 @@
-  body {
-    background-color: #ffff;
-    background-attachment: fixed;
-    background-size: cover;
-  }
-  
-  #nav-mobile a {
-    font-family: "Roboto", monospace;
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
-  
-  .nav-wrapper > .brand-logo {
-    margin-left: 1rem;
-  }
-  
-  .card {
-    box-shadow: 6px 9px 20px 5px rgba(0, 0, 0, 0.6);
-  }
-  
-  #cart {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  #cart > circle {
-    position: absolute;
-    background-color: #ffd600;
-    width: 0px;
-    height: 0px;
-    border-radius: 50%;
-    z-index: 1;
-    transition: 0.2s ease-in-out;
-  }
-  
-  #cart > circle.active {
-    width: 80px;
-    height: 80px;
-  }
-  
-  #card-grid {
-    padding-top: 10px;
-  }
-  
-  html {
-    box-sizing: border-box;
-  }
-  
-  *, *::before, *::after {
-    box-sizing: inherit;
-  }
-  
-  body {
-    margin: 0;
-  }
-  
-  .wave-container {
-    background: #FFF;
-  }
-  
-  .wave-container > svg {
-    display: block;
-    position: fixed;
-    top: 64px;
-  }
-  
-  /*# sourceMappingURL=styles.css.map */
-  
+body {
+  background-color: #ffff;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+.wave-container {
+  background: #FFF;
+}
+
+.wave-container > svg {
+  display: block;
+  position: fixed;
+  top: 64px;
+}
+
+.card {
+  box-shadow: 6px 9px 20px 5px rgba(0, 0, 0, 0.6);
+}
+
+#card-grid {
+  padding-top: 10px;
+}
