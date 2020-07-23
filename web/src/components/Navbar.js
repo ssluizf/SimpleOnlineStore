@@ -2,30 +2,41 @@ import React from 'react'
 import './Navbar.css'
 import { NavLink, useHistory } from 'react-router-dom'
 import api from '../services/api'
+import sanitizeIds from '../utils/SanitizeIds'
 
 function Navbar(props) {
     const history = useHistory()
 
     async function handleProducts(e) {
         e.preventDefault()
-
+        
         const products = await api.get('products').then(response => {
             return response.data
         })
+
+        const cartIds = await sanitizeIds()
 
         const selectedIds = Array.prototype.slice.call(document.getElementsByClassName("card spotlight")).map(e => {
             return e.getAttribute('listid')
         })
 
-        const selectedProducts = products.filter(prod => {
-            return selectedIds.includes(prod._id) ? prod : false
-        })
+        const selectedProducts = products
+            .filter(prod => {
+                return selectedIds.includes(prod._id) ? prod : false
+            })
+            .map(select => {
+                return select._id
+            })
+        
+        const newCarts = selectedProducts.filter(id => {
+            const validIds = cartIds.includes(id) ? false : id
 
-        const carts = selectedProducts.map(select => {
-            return select._id
+            return validIds
         })
-
-        api.post('/carts', carts)
+        
+        if (newCarts.length > 0) {
+            api.post('/carts', newCarts)
+        }
 
         history.push("/cart")
     }

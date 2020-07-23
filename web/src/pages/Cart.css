@@ -1,0 +1,74 @@
+h1 {
+    position: relative;
+    font-weight: bold;
+    z-index: 2;
+    padding-bottom: 2rem; 
+}
+
+.collection {
+    box-shadow: 2px 2px 20px 4px rgba(0, 0, 0, 0.6);
+}
+
+.collection-item .title {
+    font-weight: bold;
+}
+
+.collection-item > p {
+    padding-right: 120px;
+}
+
+.collection-item > .title {
+    padding-right: 140px;
+}
+
+.collection-item .right {
+    position: absolute;
+    padding-left: 10px;
+    margin-top: -85px;
+    right: 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.collection-item .counter {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    font-size: 2rem;
+}
+
+.collection-item .counter button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.collection-item .counter .add:hover {
+    color: #64dd17;
+}
+
+.collection-item .counter .remove:hover {
+    color: #ff5252;
+}
+
+.collection-item .counter :nth-of-type(2) {
+    padding-left: 4px;
+}
+
+@media only screen and (max-width: 992px) {
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .collection-item > p {
+        padding-right: 100px;
+    }
+    .collection-item > .title {
+        padding-right: 120px;
+    }
+}

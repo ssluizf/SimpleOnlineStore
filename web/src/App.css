@@ -16,16 +16,6 @@ body {
   margin: 0;
 }
 
-.wave-container {
-  background: #FFF;
-}
-
-.wave-container > svg {
-  display: block;
-  position: fixed;
-  top: 64px;
-}
-
 .card {
   box-shadow: 6px 9px 20px 5px rgba(0, 0, 0, 0.6);
 }
