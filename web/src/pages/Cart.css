@@ -5,8 +5,19 @@ h1 {
     padding-bottom: 2rem; 
 }
 
-.collection {
-    box-shadow: 2px 2px 20px 4px rgba(0, 0, 0, 0.6);
+.no-prods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+
+    position: relative;
+    font-size: 2rem;
+    z-index: 2;
+}
+
+.no-prods p:nth-last-child(1) {
+    margin-top: 0px;
 }
 
 .collection-item .title {
@@ -58,6 +69,11 @@ h1 {
     padding-left: 4px;
 }
 
+#buy {
+    float: right;
+    margin-bottom: 20px;
+}
+
 @media only screen and (max-width: 992px) {
     h1 {
         font-size: 3rem;
@@ -70,5 +86,8 @@ h1 {
     }
     .collection-item > .title {
         padding-right: 120px;
+    }
+    .no-prods {
+        font-size: 1.5rem;
     }
 }

@@ -1,43 +1,14 @@
 import React from 'react'
 import './Navbar.css'
 import { NavLink, useHistory } from 'react-router-dom'
-import api from '../services/api'
-import sanitizeIds from '../utils/SanitizeIds'
+import handleProducts from '../utils/HandleProducts'
 
 function Navbar(props) {
     const history = useHistory()
 
-    async function handleProducts(e) {
-        e.preventDefault()
+    async function handleProductsNav(e) {
+        await handleProducts(e)
         
-        const products = await api.get('products').then(response => {
-            return response.data
-        })
-
-        const cartIds = await sanitizeIds()
-
-        const selectedIds = Array.prototype.slice.call(document.getElementsByClassName("card spotlight")).map(e => {
-            return e.getAttribute('listid')
-        })
-
-        const selectedProducts = products
-            .filter(prod => {
-                return selectedIds.includes(prod._id) ? prod : false
-            })
-            .map(select => {
-                return select._id
-            })
-        
-        const newCarts = selectedProducts.filter(id => {
-            const validIds = cartIds.includes(id) ? false : id
-
-            return validIds
-        })
-        
-        if (newCarts.length > 0) {
-            api.post('/carts', newCarts)
-        }
-
         history.push("/cart")
     }
 
@@ -48,7 +19,7 @@ function Navbar(props) {
                 <header className="nav-wrapper indigo lighten-1">
                 <NavLink to="/" className="brand-logo"><i className="material-icons">shop_two</i>Shopping for</NavLink>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
-                    <li><NavLink to="/cart" onClick={ e => handleProducts(e) }><i className="material-icons" id="cart">
+                    <li><NavLink to="/cart" onClick={ e => handleProductsNav(e) }><i className="material-icons" id="cart">
                     <span>shopping_cart</span>
                     <div></div>
                     </i></NavLink></li>

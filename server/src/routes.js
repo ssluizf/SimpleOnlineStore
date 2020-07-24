@@ -6,7 +6,11 @@ const routes = Router()
 
 routes.get('/products', ProductController.index)
 
+routes.get('/products/:id', ProductController.indexById)
+
 routes.post('/product', ProductController.store)
+
+routes.delete('/cart/:id', CartController.delete)
 
 routes.get('/carts', CartController.index)
 

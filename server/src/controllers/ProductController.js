@@ -8,6 +8,14 @@ module.exports = {
         return response.json(products)
     },
 
+    async indexById(request, response) {
+        const id = request.params.id
+
+        const product = await Product.findOne({ _id: id });
+
+        return response.json(product)
+    },
+
     async store(request, response) {
         const { name, description, price, img_name } = request.body
         const img_url = `http://${db.host}:${db.port}/uploads/${img_name}`

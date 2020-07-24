@@ -1,4 +1,4 @@
-const Cart = require('../models/Cart')
+const Cart = require('../models/Cart');
 
 module.exports = {
     async index(request, response) {
@@ -8,9 +8,17 @@ module.exports = {
     },
 
     async store(request, response) {
-        const ids = request.body
+        const { id } = request.body
 
-        const cart = await Cart.create({ids})
+        const cart = await Cart.create({prod_id: id})
+
+        return response.json(cart)
+    },
+
+    async delete(request, response) {
+        const id = request.params.id
+
+        const cart = await Cart.remove({prod_id: id});
 
         return response.json(cart)
     }

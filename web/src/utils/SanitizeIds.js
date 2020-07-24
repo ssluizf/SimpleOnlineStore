@@ -5,20 +5,14 @@ async function sanitizeIds() {
         return response.data
     })
 
-    const cartList = cartData
+    const ids = cartData
         .map(obj => {
-            const idsGroups = obj.ids
+            const groupedIds = obj.prod_id
 
-            return idsGroups
+            return groupedIds
         })
 
-    let cartIds = []
-
-    for (let i = 0; cartList.length > i; i++) {
-        cartIds = cartIds.concat(...cartList[i])
-    }
-
-    return cartIds
+    return ids
 }
 
-export default sanatizeIds
+export default sanitizeIds

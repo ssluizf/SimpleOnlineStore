@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import api from '../services/api'
+import { Link, useHistory } from 'react-router-dom'
 
+import api from '../services/api'
 import './Card.css'
 import ToggleClasses from '../utils/ToggleClasses.js'
 import createElems from '../utils/CreateElems.js'
-import { Link } from 'react-router-dom'
+import handleProducts from '../utils/HandleProducts'
 
 function Card() {
     const [products, setProducts] = useState([])
+    const history = useHistory()
+
+    async function handleProductsNav(e) {
+        await handleProducts(e)
+
+        history.push("/cart")
+    }
 
     useEffect(() => {
       api.get('products').then(response => {
@@ -53,7 +61,7 @@ function Card() {
             <span className="btn-floating btn-small scale-transition scale-out" onClick={cancelCard}><i className="material-icons">close</i></span>
             <div className="card-image">
               <img src={product.img_url} alt="Product"></img>
-              <Link className="card-title hide" to="/cart">Go to Cart</Link>
+              <Link className="card-title hide" to="/cart" onClick={ e => handleProductsNav(e) }>Go to Cart</Link>
               <span className="btn-floating btn-large halfway-fab waves-effect waves-light yellow accent-4 scale-in" onClick={selectCard}><i className="material-icons">attach_money</i></span>
             </div>
             <div className="card-content">
