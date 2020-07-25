@@ -12,6 +12,8 @@ routes.post('/product', ProductController.store)
 
 routes.delete('/cart/:id', CartController.delete)
 
+routes.patch('/cart/:id', CartController.update)
+
 routes.get('/carts', CartController.index)
 
 routes.post('/carts', CartController.store)

@@ -1,5 +1,5 @@
 import api from '../services/api'
-import sanitizeIds from '../utils/SanitizeIds'
+import sanitizeCart from '../utils/SanitizeCart'
 
 async function handleProducts(e) {
     e.preventDefault()
@@ -8,7 +8,7 @@ async function handleProducts(e) {
         return response.data
     })
 
-    const cartIds = await sanitizeIds()
+    const cartIds = (await sanitizeCart()).ids
 
     const selectedIds = Array.prototype.slice.call(document.getElementsByClassName("card spotlight")).map(e => {
         return e.getAttribute('listid')
@@ -29,7 +29,7 @@ async function handleProducts(e) {
     
     if (selectedProducts.length > 0) {
         for (let product of selectedProducts) {
-            await api.post('/carts', { id : product })
+            await api.post('/carts', { id : product, quant: 1 })
         }
     }
 }

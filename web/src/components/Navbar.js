@@ -1,9 +1,15 @@
-import React from 'react'
-import './Navbar.css'
+import React, { useState } from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
-import handleProducts from '../utils/HandleProducts'
 
-function Navbar(props) {
+import './Navbar.css'
+import handleProducts from '../utils/HandleProducts'
+import Home from '../pages/Home'
+import Cart from '../pages/Cart'
+import api from '../services/api'
+
+function Navbar() {
+    const [quant, setQuant] = useState([1])
+
     const history = useHistory()
 
     async function handleProductsNav(e) {
@@ -12,12 +18,41 @@ function Navbar(props) {
         history.push("/cart")
     }
 
+    async function updateQuantity() {
+        const cartData = await api.get('/carts').then(response => {
+            return response.data
+        })
+
+        const cartIds = cartData.map(obj => {
+            const id = obj._id
+            return id
+        })
+
+        if(cartIds.length === quant.length) {
+            for(let i = 0; i < cartIds.length; i++) {
+                await api.patch(`/cart/${cartIds[i]}`, { quant: quant[i] })
+            }
+        }
+    }
+
+    async function saveQuant(e) {
+        if(history.location.pathname === "/cart") {
+            e.preventDefault()
+            await updateQuantity()
+            history.push('/')
+        }
+    }
+
+    function handleQuant(array) {
+        setQuant(array)
+    }
+
     return(
     <>
         <div className="navbar-fixed">
             <nav>
                 <header className="nav-wrapper indigo lighten-1">
-                <NavLink to="/" className="brand-logo"><i className="material-icons">shop_two</i>Shopping for</NavLink>
+                <NavLink to="/" className="brand-logo" onClick={e => saveQuant(e)}><i className="material-icons">shop_two</i>Shopping for</NavLink>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li><NavLink to="/cart" onClick={ e => handleProductsNav(e) }><i className="material-icons" id="cart">
                     <span>shopping_cart</span>
@@ -35,7 +70,10 @@ function Navbar(props) {
             </svg>
         </div>
         
-        { props.children }
+        {history.location.pathname === "/"
+            ?<Home />
+            :<Cart quant={handleQuant} />
+        }
     </>
     ) 
 }

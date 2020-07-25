@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import api from '../services/api'
-import sanitizeIds from '../utils/SanitizeIds'
+import sanitizeCart from '../utils/SanitizeCart'
 import { Link } from 'react-router-dom'
 import './Cart.css'
 
-function Cart() {
+function Cart(props) {
     const [products, setProducts] = useState([])
     const [counter, setCounter] = useState([0])
     const [hide, setHide] = useState(false)
-    
-    var count = [].concat(counter)
 
     useEffect(() => {
         async function getProductsByIds() {
-            const ids = await sanitizeIds()
+            const ids = (await sanitizeCart()).ids
+            const quantity = (await sanitizeCart()).quantity
+
             let prods = []
 
             for (let id of ids) {
@@ -24,17 +24,36 @@ function Cart() {
                 prods.push(data)
             }
 
-            const range = [...Array(ids.length)].map(e => 1)
-
-            setCounter(range)
+            setCounter(quantity)
             setProducts(prods)
         }
 
         getProductsByIds()
     }, [])
 
+    useEffect(() => {
+        props.quant(counter)
+    }, [counter])
+
+    function counterSet(index, operation) {
+        let count = [].concat(counter)
+
+        switch(operation) {
+            case '+':
+                count.splice(index, 1, count[index] + 1)
+                break;
+            case '-':
+                count.splice(index, 1, count[index] - 1)
+                break;
+            default:
+                break;
+        }
+
+        setCounter(count)
+    }
+
     function removeCollectionItem(product, index, array) {
-        if(count[index] === 1) {
+        if(counter[index] === 1) {
             const collection = Array.prototype.slice.call(document.getElementsByClassName('collection-item'))
             collection[index].classList.add('hide')
 
@@ -47,7 +66,7 @@ function Cart() {
     }
     return (
         <div className="container">
-            <h1 className="indigo-text">Carrinho de Compras</h1>
+            <h1 className="indigo-text text-lighten-1 center">Carrinho de Compras</h1>
             {(typeof products !== 'undefined' && products.length > 0) ^ hide
                 ?
                 <>
@@ -58,18 +77,18 @@ function Cart() {
                                 <p className="flow-text truncate">{product.description}</p>
                                 <div className="right">
                                     <div className="counter">
-                                        <button><i className="material-icons add" onClick={() => { count.splice(index, 1, count[index] + 1); setCounter(count) }}>add</i></button>
+                                        <button><i className="material-icons add" onClick={() => { counterSet(index, '+') }}>add</i></button>
                                         <span>{counter[index]}</span><span className="hide-on-small-only">itens</span>
-                                        <button><i className="material-icons remove" onClick={() => { removeCollectionItem(product, index, array); count.splice(index, 1, count[index] - 1); setCounter(count) }}>remove</i></button>
+                                        <button><i className="material-icons remove" onClick={() => { removeCollectionItem(product, index, array); counterSet(index, '-') }}>remove</i></button>
                                     </div>
                                     <span className="flow-text">R$ {product.price * counter[index]},00</span>
                                 </div>
                             </li>
                         ))}
                     </ul>
-                    <Link to="buy" className="waves-effect waves-light btn-large yellow accent-4 black-text" id="buy"><i className="material-icons right">attach_money</i><strong>Finalizar Compra</strong></Link>
+                    <Link to="/buy" className="waves-effect waves-light btn-large yellow accent-4 black-text" id="buy"><i className="material-icons right">attach_money</i><strong>Finalizar Compra</strong></Link>
                 </>
-                : <Link to="/" className="no-prods"><i className="material-icons large">shopping_cart</i><p>Seu carrinho está vazio.</p><p>Inicie suas compras na loja!</p></Link>
+                : <Link to="/" className="no-prods blue-grey-text text-darken-1"><i className="material-icons large">shopping_cart</i><p>Seu carrinho está vazio.</p><p>Inicie suas compras na loja!</p></Link>
             }
         </div>
     )
