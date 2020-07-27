@@ -6,7 +6,7 @@ const routes = require('./routes')
 
 const app = express()
 
-mongoose.connect('mongodb://localhost/simple_store', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost/simple_store', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .catch(() => {
         console.log("Erro de conexão")
     })

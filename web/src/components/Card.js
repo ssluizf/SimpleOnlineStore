@@ -56,7 +56,7 @@ function Card() {
     return (
       <>
         {products.map(product => (
-        <div key={product._id} className="col s12 m6 push-l1">
+        <div key={product._id} className="col s12 m6 l6">
           <div className="card" listid={product._id}>
             <span className="btn-floating btn-small scale-transition scale-out" onClick={cancelCard}><i className="material-icons">close</i></span>
             <div className="card-image">
@@ -66,7 +66,7 @@ function Card() {
             </div>
             <div className="card-content">
               <span className="card-title">{product.name} - <strong>R$ {product.price},00</strong></span>
-              <p>{product.description}</p>
+              <p className="truncate">{product.description}</p>
             </div>
           </div>
         </div>

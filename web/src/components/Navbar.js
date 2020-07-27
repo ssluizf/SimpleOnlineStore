@@ -52,7 +52,7 @@ function Navbar() {
         <div className="navbar-fixed">
             <nav>
                 <header className="nav-wrapper indigo lighten-1">
-                <NavLink to="/" className="brand-logo" onClick={e => saveQuant(e)}><i className="material-icons">shop_two</i>Shopping for</NavLink>
+                <NavLink to="/" className="brand-logo flow-text" onClick={e => saveQuant(e)}><i className="material-icons hide-on-small-only">shop_two</i>Shopping<span className="hide-on-small-only"> for</span></NavLink>
                 <ul id="nav-mobile" className="right hide-on-med-and-down">
                     <li><NavLink to="/cart" onClick={ e => handleProductsNav(e) }><i className="material-icons" id="cart">
                     <span>shopping_cart</span>

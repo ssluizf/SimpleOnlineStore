@@ -1,0 +1,13 @@
+
+  {
+    "name": "D20",
+    "description": "Dado de 20 lados para sessões de RPG",
+    "price": 50,
+    "img_name": "d20.jpg"
+  }
+  {
+    "name": "Chess",
+    "description": "Xadrex Clássico",
+    "price": 20,
+    "img_name": "chess.jpg"
+  }

@@ -1,7 +1,11 @@
 .card {
     padding: 2px;
 }
-  
+
+.card p:nth-last-child(1) {
+    font-size: 1.1rem;
+}
+
 .card-image .card-title {
     font-family: "Roboto", monospace;
     font-weight: 500;
@@ -38,10 +42,42 @@ img.spotlight {
 .card-image span:hover {
     width: 72px;
     height: 72px;
-    font-size: 32px;
+}
+
+.card-image span:hover > i {
+    transition: font-size 0.8s;
+    font-size: 2.2rem;
 }
 
 strong:hover {
     font-weight: bold;
     text-decoration: underline;
+}
+
+#card-grid .card {
+    height: 24rem;
+}
+
+@media only screen and (min-width: 1200px) {
+    #card-grid .card {
+        height: 30rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #card-grid .card {
+        height: 25.5rem;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    #card-grid .card {
+        height: 29.5rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #card-grid .card {
+        height: 32.5rem;
+    }
 }

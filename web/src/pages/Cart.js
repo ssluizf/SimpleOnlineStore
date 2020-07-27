@@ -33,7 +33,7 @@ function Cart(props) {
 
     useEffect(() => {
         props.quant(counter)
-    }, [counter])
+    }, [counter, props])
 
     function counterSet(index, operation) {
         let count = [].concat(counter)
