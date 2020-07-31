@@ -1,11 +1,12 @@
-# SimpleOnlineStore - Intermediate [Preview]
+# SimpleOnlineStore - Intermediate
 From App Ideas Collection, by [florinpop17](https://github.com/florinpop17/app-ideas).
+Made with React.
 
 ## Cards
-<img src=".github/cards.png" alt="cards" />
+<img src=".github/Cards.png" alt="cards" />
 
 ## Cart
-<img src=".github/cart.png" alt="cart" />
+<img src=".github/Cart.png" alt="cart" />
 
 ## Empty Cart
-<img src=".github/empty.png" alt="empty" />
+<img src=".github/Empty.png" alt="empty" />
