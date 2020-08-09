@@ -5,6 +5,7 @@ import './Navbar.css'
 import handleProducts from '../utils/HandleProducts'
 import Home from '../pages/Home'
 import Cart from '../pages/Cart'
+import Product from '../pages/Product'
 import api from '../services/api'
 
 function Navbar() {
@@ -47,6 +48,27 @@ function Navbar() {
         setQuant(array)
     }
 
+    function handlePages() {
+        let page;
+
+        switch(history.location.pathname) {
+            case "/":
+                page = <Home />
+                break;
+            case "/cart":
+                page = <Cart quant={handleQuant} />
+                break;
+            case "/product":
+                page = <Product />
+                break;
+            default:
+                page = <Home />
+                break;
+        }
+
+        return page;
+    }
+
     return(
     <>
         <div className="navbar-fixed">
@@ -69,11 +91,7 @@ function Navbar() {
                 <path fill="#ffb74d" fillOpacity="1" d="M0,320L48,282.7C96,245,192,171,288,165.3C384,160,480,224,576,213.3C672,203,768,117,864,74.7C960,32,1056,32,1152,80C1248,128,1344,224,1392,272L1440,320L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
             </svg>
         </div>
-        
-        {history.location.pathname === "/"
-            ?<Home />
-            :<Cart quant={handleQuant} />
-        }
+        {handlePages()}
     </>
     ) 
 }

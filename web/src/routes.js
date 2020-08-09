@@ -8,6 +8,7 @@ function Routes() {
         <BrowserRouter>
             <Route path="/" exact render={() => <Navbar></Navbar>} />
             <Route path="/cart" render={() => <Navbar></Navbar>} />
+            <Route path="/product" render={() => <Navbar></Navbar>} />
         </BrowserRouter>
     )
 }

@@ -5,6 +5,32 @@ h1 {
     padding-bottom: 2rem; 
 }
 
+.purchased {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.purchased:not(.hide) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.purchased:not(.hide) + div {
+    filter: blur(2px);
+}
+
+.purchased:not(.hide) > span {
+    color: rgb(255, 255, 255);
+    font-size: 5rem;
+}
+
 .no-prods {
     display: flex;
     flex-direction: column;

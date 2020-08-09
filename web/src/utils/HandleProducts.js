@@ -14,7 +14,7 @@ async function handleProducts(e) {
         return e.getAttribute('listid')
     })
 
-    const selectedProducts = products
+    const selectedProductsToCart = products
         .filter(prod => {
             return selectedIds.includes(prod._id) ? prod : false
         })
@@ -23,13 +23,32 @@ async function handleProducts(e) {
         })
         .filter(id => {
             const validIds = cartIds.includes(id) ? false : id
-    
+
             return validIds
         })
     
-    if (selectedProducts.length > 0) {
-        for (let product of selectedProducts) {
+    const deselectedProductsOnCart = products
+        .filter(prod => {
+            return selectedIds.includes(prod._id) ? false : prod
+        })
+        .map(select => {
+            return select._id
+        })
+        .filter(id => {
+            const validIds = cartIds.includes(id) ? id : false
+
+            return validIds
+        })
+
+    if (selectedProductsToCart.length > 0) {
+        for (let product of selectedProductsToCart) {
             await api.post('/carts', { id : product, quant: 1 })
+        }
+    }
+    
+    if (deselectedProductsOnCart.length > 0) {
+        for (let product of deselectedProductsOnCart) {
+            await api.delete(`cart/${product}`)
         }
     }
 }
